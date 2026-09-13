@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CutClone - แม่แบบตัดต่อ</title>
+<meta name="theme-color" content="#0a0a0f">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="icon" href="assets/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HOME / TEMPLATE FEED SCREEN ============ -->
+<section id="screen-home" class="screen active">
+  <header class="topbar">
+    <div class="searchbar">
+      <span class="icon-search">🔍</span>
+      <input type="text" id="searchInput" placeholder="ค้นหาแม่แบบ...">
+    </div>
+    <button class="autocut-btn">
+      <span>▶️⚡</span>
+      <small>AutoCut</small>
+    </button>
+  </header>
+
+  <nav class="chip-tabs" id="chipTabs">
+    <button class="chip" data-cat="follow">กำลังติดตาม</button>
+    <button class="chip active" data-cat="reco">แนะนำ 🔥</button>
+    <button class="chip" data-cat="seed">Seedance 2.0 🔥</button>
+    <button class="chip" data-cat="selfie">เซลฟี่</button>
+    <button class="chip chip-more">⌄</button>
+  </nav>
+
+  <div class="template-grid" id="templateGrid"></div>
+</section>
+
+<!-- ============ EDITOR SCREEN ============ -->
+<section id="screen-editor" class="screen">
+  <header class="editor-top">
+    <button id="btnBack" class="icon-btn">←</button>
+    <span id="editorTitle">แก้ไขแม่แบบ</span>
+    <button id="btnExportMenu" class="icon-btn">⋯</button>
+  </header>
+
+  <div class="canvas-wrap">
+    <canvas id="editorCanvas" width="500" height="700"></canvas>
+    <div class="canvas-hint" id="canvasHint">แตะรูปเพื่อย้าย • ลากมุมเพื่อขยาย</div>
+  </div>
+
+  <div class="editor-toolbar">
+    <label class="tool-btn">
+      <input type="file" id="photoInput" accept="image/*" hidden>
+      📷<span>ใส่รูปของฉัน</span>
+    </label>
+    <button class="tool-btn" id="btnAddText">🔤<span>ข้อความ</span></button>
+    <button class="tool-btn" id="btnColor">🎨<span>สี</span></button>
+    <button class="tool-btn" id="btnSticker">✨<span>สติกเกอร์</span></button>
+    <button class="tool-btn" id="btnDelete">🗑️<span>ลบ</span></button>
+  </div>
+
+  <div class="editor-panel" id="textPanel" style="display:none;">
+    <input type="text" id="textValue" placeholder="พิมพ์ข้อความ...">
+    <input type="color" id="textColorPicker" value="#ffffff">
+    <input type="range" id="textSize" min="20" max="90" value="48">
+  </div>
+
+  <div class="export-row">
+    <button class="export-btn secondary" id="btnSaveProject">💾 บันทึก</button>
+    <button class="export-btn primary" id="btnExportImage">⬇️ รูปภาพ</button>
+    <button class="export-btn primary hot" id="btnExportVideo">🎬 คลิป ปัง!</button>
+    <button class="export-btn secondary" id="btnShare">📤 แชร์ออกแอปอื่น</button>
+  </div>
+  <div id="exportStatus" class="export-status"></div>
+</section>
+
+<!-- ============ AI LAB SCREEN ============ -->
+<section id="screen-ailab" class="screen">
+  <header class="simple-top"><span>AI Lab</span></header>
+  <div class="placeholder-content">
+    <div class="big-emoji">🤖✨</div>
+    <p>ฟีเจอร์ AI (ตัวอย่างการจำลอง)</p>
+    <div class="ai-grid">
+      <div class="ai-card">🖼️ AI สร้างภาพพื้นหลัง</div>
+      <div class="ai-card">🎭 AI เปลี่ยนสไตล์</div>
+      <div class="ai-card">🗣️ AI พากย์เสียง</div>
+      <div class="ai-card">✂️ AutoCut อัจฉริยะ</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS SCREEN ============ -->
+<section id="screen-projects" class="screen">
+  <header class="simple-top"><span>โปรเจกต์ของฉัน</span></header>
+  <div id="projectList" class="project-list"></div>
+</section>
+
+<!-- ============ PROFILE SCREEN ============ -->
+<section id="screen-profile" class="screen">
+  <header class="simple-top"><span>ฉัน</span></header>
+  <div class="placeholder-content">
+    <div class="avatar-circle">🙂</div>
+    <p>ผู้ใช้ CutClone</p>
+    <p class="muted">แอปนี้เป็นผลงานจำลอง (Clone) เพื่อการศึกษา<br>สร้างด้วย HTML / CSS / JS + PWA</p>
+  </div>
+</section>
+
+<!-- ============ BOTTOM NAV ============ -->
+<nav class="bottom-nav">
+  <button class="nav-item" data-screen="editor-blank">
+    <span class="nav-icon">✂️</span><span>แก้ไข</span>
+  </button>
+  <button class="nav-item active" data-screen="home">
+    <span class="nav-icon">▶️</span><span>แม่แบบ</span>
+  </button>
+  <button class="nav-item" data-screen="ailab">
+    <span class="nav-icon">🧪</span><span>AI Lab</span>
+  </button>
+  <button class="nav-item" data-screen="projects">
+    <span class="nav-icon">📁</span><span>โปรเจกต์</span>
+  </button>
+  <button class="nav-item" data-screen="profile">
+    <span class="nav-icon">👤</span><span>ฉัน</span>
+  </button>
+</nav>
+
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

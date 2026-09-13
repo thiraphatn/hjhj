@@ -1,0 +1,26 @@
+{
+  "name": "CutClone - แม่แบบตัดต่อ",
+  "short_name": "CutClone",
+  "description": "แอปจำลอง (Clone) หน้าตาการเรียกดูแม่แบบและตัดต่อวิดีโอ/รูปภาพแบบ CapCut สร้างด้วย HTML CSS JS สำหรับงานการศึกษา",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "lang": "th",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
